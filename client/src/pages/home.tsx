@@ -34,22 +34,24 @@ import {
 const skills = [
   {
     name: "JavaScript/TypeScript",
-    level: 95,
+    level: 70,
     color: "from-yellow-400 to-yellow-600",
   },
-  { name: "React/Next.js", level: 90, color: "from-blue-400 to-blue-600" },
-  { name: "Node.js/Express", level: 85, color: "from-green-400 to-green-600" },
-  { name: "Python/Django", level: 80, color: "from-blue-500 to-blue-700" },
+  { name: "React/Next.js", level: 80, color: "from-blue-400 to-blue-600" },
+  { name: "Node.js/Express", level: 75, color: "from-green-400 to-green-600" },
+  { name: "Python/Django", level: 70, color: "from-blue-500 to-blue-700" },
+  { name: "Java/Spring", level: 85, color: "from-blue-500 to-blue-700" },
+  { name: "C#/.Net", level: 85, color: "from-blue-500 to-blue-700" },
   {
     name: "PostgreSQL/MongoDB",
     level: 85,
     color: "from-purple-400 to-purple-600",
   },
-  { name: "AWS/Docker", level: 75, color: "from-orange-400 to-orange-600" },
+  { name: "AWS/Azure", level: 75, color: "from-orange-400 to-orange-600" },
   { name: "UI/UX Design", level: 70, color: "from-pink-400 to-pink-600" },
   {
-    name: "GraphQL/REST APIs",
-    level: 88,
+    name: "Microservices/REST APIs",
+    level: 80,
     color: "from-indigo-400 to-indigo-600",
   },
 ];
@@ -183,28 +185,32 @@ const experiences = [
 
 const certifications = [
   {
-    name: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2023",
+    name: "Microsoft Certified: Azure Developer Associate",
+    issuer: "Microsoft",
+    date: "2025",
     color: "from-orange-400 to-orange-600",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/chandusiddi-8323/BD1E281D6399FCB7?sharingId=6648FB862A679FDA",
   },
   {
-    name: "Google Cloud Professional Developer",
-    issuer: "Google Cloud",
-    date: "2023",
+    name: "Microsoft Certified: Azure AI Fundamentals",
+    issuer: "Microsoft",
+    date: "2024",
     color: "from-blue-400 to-blue-600",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/chandusiddi-8323/401384DF011CB019?sharingId=6648FB862A679FDA",
   },
   {
-    name: "MongoDB Certified Developer",
-    issuer: "MongoDB University",
-    date: "2022",
+    name: "Microsoft Certified: Azure Data Fundamentals",
+    issuer: "Microsoft",
+    date: "2024",
     color: "from-green-400 to-green-600",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/chandusiddi-8323/B6836AF156D2BA5?sharingId=6648FB862A679FDA",
   },
   {
-    name: "Meta React Developer Certificate",
-    issuer: "Meta",
-    date: "2022",
+    name: "Microsoft Certified: Azure Fundamentals",
+    issuer: "Microsoft",
+    date: "2023",
     color: "from-blue-500 to-blue-700",
+    link: "https://learn.microsoft.com/api/credentials/share/en-us/chandusiddi-8323/B6836AF156D2BA5?sharingId=6648FB862A679FDA",
   },
 ];
 
@@ -269,18 +275,6 @@ export default function Home() {
               >
                 Contact
               </a>
-              <Button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                variant="outline"
-                size="icon"
-                className="shadow-neuro hover:shadow-neuro-hover transition-all"
-              >
-                {theme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
-              </Button>
             </div>
           </div>
         </div>
@@ -292,10 +286,12 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white">
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Full Stack Developer &
+                Full Stack Developer
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-mint to-orange">
                   {" "}
-                  Creative Problem Solver
+                  <span className="text-white/80">
+                    & Creative Problem Solver
+                  </span>{" "}
                 </span>
               </h1>
               <p className="text-xl mb-8 text-white/90">
@@ -304,13 +300,21 @@ export default function Home() {
                 cloud architecture, and scalable solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Button className="bg-white text-primary px-8 py-4 rounded-full font-semibold shadow-neuro hover:shadow-neuro-hover transition-all">
+                <Button
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="bg-white text-primary px-8 py-4 rounded-full font-semibold shadow-neuro hover:shadow-neuro-hover transition-all"
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   Get In Touch
                 </Button>
+
                 <Button
                   variant="outline"
-                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition-all"
+                  className="bg-black text-white dark:bg-white dark:text-primary px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-all"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download CV
@@ -319,24 +323,36 @@ export default function Home() {
 
               <div className="flex items-center space-x-6">
                 <div className="flex space-x-4">
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-primary rounded-full"
+                  <a
+                    href="https://github.com/siddichandu02" // replace with your actual GitHub URL
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Github className="w-4 h-4" />
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-primary rounded-full"
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="text-gray-800 dark:text-white border-gray-300 dark:border-white hover:bg-gray-100 dark:hover:bg-white hover:text-primary rounded-full"
+                    >
+                      <Github className="w-4 h-4" />
+                    </Button>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/chandu-siddi"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Linkedin className="w-4 h-4" />
-                  </Button>
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="text-gray-800 dark:text-white border-gray-300 dark:border-white hover:bg-gray-100 dark:hover:bg-white hover:text-primary rounded-full"
+                    >
+                      <Linkedin className="w-4 h-4" />
+                    </Button>
+                  </a>
                   <Button
                     size="icon"
                     variant="outline"
-                    className="border-white text-white hover:bg-white hover:text-primary rounded-full"
+                    className="text-gray-800 dark:text-white border-gray-300 dark:border-white hover:bg-gray-100 dark:hover:bg-white hover:text-primary rounded-full"
                   >
                     <Twitter className="w-4 h-4" />
                   </Button>
@@ -344,7 +360,7 @@ export default function Home() {
                 <div className="text-white/80 flex items-center space-x-4">
                   <div className="flex items-center space-x-1">
                     <MapPin className="w-4 h-4" />
-                    <span className="text-sm">San Francisco, CA</span>
+                    <span className="text-sm">Frisco, TX</span>
                   </div>
                   <div className="flex items-center space-x-1">
                     <Zap className="w-4 h-4" />
@@ -372,7 +388,7 @@ export default function Home() {
                       Frontend
                     </div>
                     <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                      React/Next.js
+                      React/Nextjs/Angular
                     </div>
                   </div>
                 </div>
@@ -391,7 +407,7 @@ export default function Home() {
                       Backend
                     </div>
                     <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                      Node.js/Python
+                      Node.js/Java/C#
                     </div>
                   </div>
                 </div>
@@ -426,21 +442,27 @@ export default function Home() {
                   Started as a curious computer science student who fell in love
                   with the power of code to solve real-world problems. Over the
                   years, I've evolved from writing simple scripts to
-                  architecting complex distributed systems.
+                  architecting complex, distributed systems that power scalable
+                  and resilient applications.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   I believe in continuous learning, clean code, and the
-                  importance of user experience in every application I build.
-                  When I'm not coding, you'll find me exploring new
-                  technologies, contributing to open source, or mentoring
-                  aspiring developers.
+                  importance of user-centric design in every application I
+                  build. Whether it's fine-tuning performance, improving
+                  accessibility, or simplifying the developer experience, I
+                  strive for meaningful impact through thoughtful engineering.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  When I'm not coding, you'll find me exploring emerging
+                  technologies like AI and cloud-native architectures,
+                  contributing to open source.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-neuro text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    50+
+                    20+
                   </div>
                   <div className="text-sm text-gray-600 dark:text-gray-300">
                     Projects Completed
@@ -615,15 +637,31 @@ export default function Home() {
                   Master of Science in Computer Science
                 </h3>
                 <p className="text-lg text-primary font-semibold mb-2">
-                  Stanford University
+                  University of Central Florida
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  2016 - 2018 • GPA: 3.8/4.0
+                  2022 - 2024 • GPA: 3.9/4.0
                 </p>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Specialized in Distributed Systems and Machine Learning.
-                  Thesis on "Scalable Microservices Architecture for Real-time
-                  Data Processing."
+                  Gained hands-on experience through academic projects involving
+                  full-stack development, data pipelines, and real-time system
+                  design.
+                </p>
+              </div>
+              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-3xl shadow-neuro mt-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Bachelor of Technology in Information Technology
+                </h3>
+                <p className="text-lg text-primary font-semibold mb-2">
+                  Keshav Memorial Institute of Technology
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  2016 - 2020 • GPA: 3.9/4.0
+                </p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Gained a strong foundation in software development, computer
+                  networks, databases, and web technologies. Participated in
+                  team projects, coding contests, and workshops.
                 </p>
               </div>
             </div>
@@ -634,27 +672,34 @@ export default function Home() {
                 <Award className="w-8 h-8 mr-3 text-mint" />
                 Certifications
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-10">
                 {certifications.map((cert, index) => (
                   <div
                     key={index}
                     className="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl shadow-neuro"
                   >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <h3 className="font-bold text-gray-900 dark:text-white">
-                          {cert.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          {cert.issuer}
-                        </p>
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-primary hover:underline"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-bold text-gray-900 dark:text-white">
+                            {cert.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 dark:text-gray-300">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <Badge
+                          className={`bg-gradient-to-r ${cert.color} text-white`}
+                        >
+                          {cert.date}
+                        </Badge>
                       </div>
-                      <Badge
-                        className={`bg-gradient-to-r ${cert.color} text-white`}
-                      >
-                        {cert.date}
-                      </Badge>
-                    </div>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -671,8 +716,8 @@ export default function Home() {
               Let's Work Together
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Ready to bring your ideas to life? I'm always excited to discuss
-              new opportunities and challenging projects.
+              I'm always excited to discuss new opportunities and challenging
+              projects.
             </p>
           </div>
 
@@ -705,7 +750,7 @@ export default function Home() {
                         Location
                       </p>
                       <p className="text-gray-600 dark:text-gray-300">
-                        San Francisco, CA
+                        Frisco, TX
                       </p>
                     </div>
                   </div>
