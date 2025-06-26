@@ -54,7 +54,7 @@ app.use((req, res, next) => {
     await setupVite(app, server);
   } else {
     // ✅ Serve Vite frontend from /dist/client
-    const distPath = path.join(__dirname, "client"); // ✅ correct
+    const distPath = path.join(__dirname, "../dist/client"); // ✅ correct
     app.use(express.static(distPath));
     app.get("*", (_req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
