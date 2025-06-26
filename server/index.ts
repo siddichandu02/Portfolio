@@ -1,14 +1,17 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { createServer } from "http";
 import { registerRoutes } from "./routes";
-import { setupVite, log } from "./vite"; // ⛔️ Removed `serveStatic` (we’ll implement it inline instead)
+import { setupVite, log } from "./vite";
 import path from "path";
+import { fileURLToPath } from "url"; // ✅ NEW
+
+const __filename = fileURLToPath(import.meta.url); // ✅ NEW
+const __dirname = path.dirname(__filename); // ✅ NEW
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// ✅ Logging middleware (keep as-is)
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -36,34 +39,29 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // ✅ Register all your API routes
   await registerRoutes(app);
 
-  // ✅ Global error handler (keep)
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
     res.status(status).json({ message });
     throw err;
   });
+
   const server = createServer(app);
 
-  // 🔁 DEV MODE (use Vite middleware)
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
-    // ✅ PROD MODE: Serve built frontend from Vite's output
-    const distPath = path.join(__dirname, "../client/dist");
-
-    app.use(express.static(distPath)); // serve static files (JS, CSS, etc.)
+    // ✅ Serve Vite frontend from /dist/client
+    const distPath = path.join(__dirname, "client"); // ✅ correct
+    app.use(express.static(distPath));
     app.get("*", (_req, res) => {
-      res.sendFile(path.join(distPath, "index.html")); // fallback for React Router
+      res.sendFile(path.join(distPath, "index.html"));
     });
   }
 
-  // ✅ Bind to Railway or local port
   const port = process.env.PORT || 5000;
-
   server.listen(Number(port), "0.0.0.0", () => {
     log(`🚀 Server is listening on http://0.0.0.0:${port}`);
   });

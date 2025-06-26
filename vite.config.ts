@@ -25,7 +25,7 @@ export default defineConfig(async () => ({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "client/dist"),
+    outDir: path.resolve(import.meta.dirname, "dist/client"),
     emptyOutDir: true,
   },
   server: {
